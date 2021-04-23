@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -28,6 +29,20 @@ use App\Http\Controllers\PsychologistController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post(
+    'auth/login',
+    [AuthController::class, 'login']
+);
+
+Route::group(['middleware' => ['apiJwt']], function(){
+
+    // Protected Routes
+    Route::post(
+        'auth/logout',
+        [AuthController::class, 'logout']
+    );
+});
 
 Route::get(
     '/admin',
@@ -89,7 +104,3 @@ Route::get(
     '/wallet',
     [WalletController::class, 'index']
 );
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
