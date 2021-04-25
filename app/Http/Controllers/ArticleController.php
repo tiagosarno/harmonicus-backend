@@ -7,35 +7,21 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    protected $model;
+
+    public function __construct(ArticleRepositoryInterface $model)
+    {
+        $this->model = $model;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ArticleRepositoryInterface $model)
+    public function index()
     {
-        return $model->all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return $this->model->all();
     }
 
     /**
@@ -46,18 +32,24 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->model->findById($id);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function store(Request $request)
     {
-        //
+        try{
+            $res = $this->model->store($request);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 
     /**
@@ -69,7 +61,13 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $res = $this->model->update($request, $id);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 
     /**
@@ -80,6 +78,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $res = $this->model->destroy($id);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 }

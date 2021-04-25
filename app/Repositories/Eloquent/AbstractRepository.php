@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories\Eloquent;
+use Illuminate\Http\Request;
 
 abstract class AbstractRepository
 {
@@ -19,5 +20,28 @@ abstract class AbstractRepository
     public function all()
     {
         return $this->model->all();
+    }
+
+    public function findById($id)
+    {
+        return $this->model->find($id);
+    }
+
+    public function store(Request $request)
+    {
+        return $this->model->create($request->all());
+    }
+
+    public function update(Request $request, $id)
+    {
+        $params = $request->all();
+        $entity = $this->model->find($id);
+        $entity->update($params);
+        return $entity;
+    }
+
+    public function destroy($id)
+    {
+        return $this->model->destroy($id);
     }
 }

@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = "id";
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_psychologist',
+        'id_theme',
+        'date',
+        'status',
+        'title',
+        'description',
+        'file'
+    ];
 }
