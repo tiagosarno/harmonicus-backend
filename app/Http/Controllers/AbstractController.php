@@ -29,7 +29,7 @@ class AbstractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         return $this->model->findById($id);
     }
@@ -58,7 +58,7 @@ class AbstractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         try{
             $res = $this->model->update($request, $id);
@@ -75,7 +75,7 @@ class AbstractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         try{
             $res = $this->model->destroy($id);
