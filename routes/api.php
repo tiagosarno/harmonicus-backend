@@ -25,14 +25,15 @@ use App\Http\Controllers\PsychologistController;
 Route::post('auth/login',[AuthController::class, 'login']);
 
 Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
-Route::get('/article/show/{id}',[ArticleController::class, 'show']);
-Route::get('/product/show/{id}',[ProductController::class, 'show']);
-Route::get('/psychologist/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
-Route::get('/psychologist/show/{id}',[PsychologistController::class, 'show']);
-Route::get('/psyschedule/show/{id}',[PsyScheduleController::class, 'show']);
-Route::get('/rating/show/{id}',[RatingController::class, 'show']);
 Route::get('/video/{order}/{pages}/{page}',[VideoController::class, 'index']);
-Route::get('/video/show/{id}',[VideoController::class, 'show']);
+Route::get('/psychologist/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
+
+Route::get('/article/{id}',[ArticleController::class, 'show']);
+Route::get('/product/{id}',[ProductController::class, 'show']);
+Route::get('/psychologist/{id}',[PsychologistController::class, 'show']);
+Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
+Route::get('/rating/{id}',[RatingController::class, 'show']);
+Route::get('/video/{id}',[VideoController::class, 'show']);
 
 // Protected Routes
 

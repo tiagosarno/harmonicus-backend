@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PsychologistController extends Controller
 {
+    protected $model;
+
+    public function __construct(PsychologistRepositoryInterface $model)
+    {
+        $this->model = $model;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,13 +25,14 @@ class PsychologistController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show($id)
     {
-        //
+        return $this->model->findById($id);
     }
 
     /**
@@ -35,29 +43,13 @@ class PsychologistController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        try{
+            $res = $this->model->store($request);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 
     /**
@@ -69,7 +61,13 @@ class PsychologistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $res = $this->model->update($request, $id);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 
     /**
@@ -80,6 +78,12 @@ class PsychologistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $res = $this->model->destroy($id);
+            return $res;
+        }
+        catch(Exception $e){
+            return "Error: {$e}";
+        }
     }
 }
