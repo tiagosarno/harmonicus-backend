@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class ArticleController extends AbstractController
 {
-    protected $model;
-
     public function __construct(ArticleRepositoryInterface $model)
     {
         parent::__construct($model);

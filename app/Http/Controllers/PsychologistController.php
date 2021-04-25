@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class PsychologistController extends AbstractController
 {
-    protected $model;
-
     public function __construct(PsychologistRepositoryInterface $model)
     {
         parent::__construct($model);

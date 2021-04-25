@@ -7,8 +7,6 @@ use App\Repositories\Contracts\CostRepositoryInterface;
 
 class CostController extends AbstractController
 {
-    protected $model;
-
     public function __construct(CostRepositoryInterface $model)
     {
         parent::__construct($model);
