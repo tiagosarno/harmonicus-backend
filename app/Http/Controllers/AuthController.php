@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -13,13 +14,21 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only(['email', 'password']);
-
-        if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        try {
+            $credentials = $request->only(['email', 'password']);
+            if (!$token = auth('api')->attempt($credentials)) {
+                return response()->json([
+                    'error' => 'Unauthorized',
+                    'status' => '401'
+                ], 201);
+            }
+            return $this->respondWithToken($token);
+        }catch(Exception $e){
+            return response()->json([
+                'error' => 'Server Error',
+                'message' => $e
+            ], 400);
         }
-
-        return $this->respondWithToken($token);
     }
 
     /**
