@@ -136,6 +136,7 @@ Route::group(['middleware' => ['apiJwt']], function(){
     Route::prefix('/user')->group( function(){
         Route::post('/store',[UserController::class, 'store']);
         Route::get('/{id}',[UserController::class, 'show']);
+        Route::post('/search',[UserController::class, 'search']);
         Route::put('/{id}',[UserController::class, 'update']);
         Route::delete('/{id}',[UserController::class, 'destroy']);
     });

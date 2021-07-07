@@ -35,6 +35,17 @@ class AbstractController extends Controller
     }
 
     /**
+     * Search items on database
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        return $this->model->findBy($request);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -27,6 +27,16 @@ abstract class AbstractRepository
         return $this->model->find($id);
     }
 
+    public function findBy($request)
+    {
+        if($request->first) {
+            return $this->model->where($request->key, $request->value)->first();
+        }
+        else {
+            return $this->model->where($request->key, $request->value)->get();
+        }
+    }
+
     public function store(Request $request)
     {
         return $this->model->create($request->all());
