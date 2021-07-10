@@ -35,7 +35,7 @@ class Psychologist extends Model
         'crp_state',
         'profissional_title',
         'profissional_resume',
-        'completed_training_courses',
+        'courses',
         'academic_level',
         'academic_formation',
         'lates_url',
