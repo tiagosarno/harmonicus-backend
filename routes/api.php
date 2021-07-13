@@ -34,6 +34,7 @@ Route::get('/psychologist/{id}',[PsychologistController::class, 'show']);
 Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
 Route::get('/rating/{id}',[RatingController::class, 'show']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
+Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
 
 // Protected Routes
 

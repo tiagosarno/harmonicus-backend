@@ -12,5 +12,10 @@ class VideoController extends AbstractController
         parent::__construct($model);
     }
 
-    // Code
+    public function getYouTubeData($queryString)
+    {
+        $url = 'https://www.youtube.com/watch?' . $queryString;
+        $saida = simplexml_load_file("https://www.youtube.com/oembed?url=".$url."&format=xml");
+        return json_encode($saida);
+    }
 }
