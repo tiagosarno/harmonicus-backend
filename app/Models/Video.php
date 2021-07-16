@@ -18,7 +18,6 @@ class Video extends Model
     protected $fillable = [
         'id_psychologist',
         'id_theme',
-        'date',
         'status',
         'title',
         'description',
