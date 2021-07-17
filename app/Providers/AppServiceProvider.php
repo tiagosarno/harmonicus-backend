@@ -74,6 +74,14 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\WalletRepositoryInterface',
             'App\Repositories\Eloquent\WalletRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\SpecialityRepositoryInterface',
+            'App\Repositories\Eloquent\SpecialityRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\RegionalRepositoryInterface',
+            'App\Repositories\Eloquent\RegionalRepository'
+        );
     }
 
     /**

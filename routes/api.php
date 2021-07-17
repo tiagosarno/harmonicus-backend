@@ -14,8 +14,10 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\RegionalController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\PsyScheduleController;
 use App\Http\Controllers\PsychologistController;
 
@@ -35,6 +37,9 @@ Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
 Route::get('/rating/{id}',[RatingController::class, 'show']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
 Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
+
+Route::get('/speciality',[SpecialityController::class, 'index']);
+Route::get('/regional',[RegionalController::class, 'index']);
 
 // Protected Routes
 
