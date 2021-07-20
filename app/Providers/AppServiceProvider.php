@@ -82,6 +82,14 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\RegionalRepositoryInterface',
             'App\Repositories\Eloquent\RegionalRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\AreaRepositoryInterface',
+            'App\Repositories\Eloquent\AreaRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\ThemeRepositoryInterface',
+            'App\Repositories\Eloquent\ThemeRepository'
+        );
     }
 
     /**

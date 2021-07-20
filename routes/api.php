@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\WalletController;
@@ -40,6 +42,8 @@ Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
 
 Route::get('/speciality',[SpecialityController::class, 'index']);
 Route::get('/regional',[RegionalController::class, 'index']);
+Route::get('/areas',[AreaController::class, 'index']);
+Route::get('/themes',[ThemeController::class, 'index']);
 
 // Protected Routes
 
