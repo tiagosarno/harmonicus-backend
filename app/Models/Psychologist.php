@@ -49,6 +49,7 @@ class Psychologist extends Model
         'address_street',
         'address_street_addon',
         'address_number',
+        'harmonicus_page',
         'created_at',
         'updated_at'
     ];
