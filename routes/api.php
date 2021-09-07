@@ -19,6 +19,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\RegionalController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\MediaThemeController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\PsyScheduleController;
 use App\Http\Controllers\PsychologistController;
@@ -37,14 +38,20 @@ Route::get('/product/{id}',[ProductController::class, 'show']);
 Route::get('/psychologist/{id}',[PsychologistController::class, 'show']);
 Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
 Route::get('/rating/{id}',[RatingController::class, 'show']);
+Route::get('/video/fullcount',[VideoController::class, 'fullcount']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
 Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
 Route::post('/video/search',[VideoController::class, 'search']);
+Route::get('/video/random/{limit?}',[VideoController::class, 'random']);
 
 Route::get('/speciality',[SpecialityController::class, 'index']);
 Route::get('/regional',[RegionalController::class, 'index']);
 Route::get('/areas',[AreaController::class, 'index']);
 Route::get('/themes',[ThemeController::class, 'index']);
+Route::get('/themes/{id?}',[ThemeController::class, 'show']);
+
+Route::get('/mediathemes',[MediaThemeController::class, 'index']);
+Route::post('/mediathemes/search',[MediaThemeController::class, 'search']);
 
 // Protected Routes
 

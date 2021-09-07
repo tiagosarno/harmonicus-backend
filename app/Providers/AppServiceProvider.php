@@ -90,6 +90,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\ThemeRepositoryInterface',
             'App\Repositories\Eloquent\ThemeRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\MediaThemeRepositoryInterface',
+            'App\Repositories\Eloquent\MediaThemeRepository'
+        );
     }
 
     /**

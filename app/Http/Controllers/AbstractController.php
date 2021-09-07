@@ -24,6 +24,16 @@ class AbstractController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function fullcount()
+    {
+        return $this->model->fullcount();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -43,6 +53,17 @@ class AbstractController extends Controller
     public function search(Request $request)
     {
         return $this->model->findBy($request);
+    }
+
+    /**
+     * Random items on database
+     *
+     * @param integer $resultsNumber
+     * @return \Illuminate\Http\Response
+     */
+    public function random($resultsNumber = 1)
+    {
+        return $this->model->random($resultsNumber);
     }
 
     /**
