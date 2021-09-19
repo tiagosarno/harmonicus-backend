@@ -4,14 +4,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProductController;
@@ -28,6 +31,11 @@ use App\Http\Controllers\PsychologistController;
 
 // GET JWT TOKEN
 Route::post('auth/login',[AuthController::class, 'login']);
+
+Route::get('/country',[CountryController::class, 'index']);
+Route::get('/state',[StateController::class, 'index']);
+Route::post('/state/search',[StateController::class, 'search']);
+Route::post('/city/search',[CityController::class, 'search']);
 
 Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
 Route::get('/video/{order}/{pages}/{page}',[VideoController::class, 'index']);
