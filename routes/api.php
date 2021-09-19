@@ -31,35 +31,37 @@ use App\Http\Controllers\PsychologistController;
 
 // GET JWT TOKEN
 Route::post('auth/login',[AuthController::class, 'login']);
-
-Route::get('/country',[CountryController::class, 'index']);
-Route::get('/state',[StateController::class, 'index']);
-Route::post('/state/search',[StateController::class, 'search']);
 Route::post('/city/search',[CityController::class, 'search']);
+Route::post('/mediathemes/search',[MediaThemeController::class, 'search']);
+Route::post('/state/search',[StateController::class, 'search']);
+Route::post('/video/search',[VideoController::class, 'search']);
 
-Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
-Route::get('/video/{order}/{pages}/{page}',[VideoController::class, 'index']);
-Route::get('/psychologist/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
-
+Route::get('/areas',[AreaController::class, 'index']);
 Route::get('/article/{id}',[ArticleController::class, 'show']);
+Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
+Route::get('/country',[CountryController::class, 'index']);
+Route::get('/mediathemes',[MediaThemeController::class, 'index']);
+Route::get('/patient/{order}/{pages}/{page}',[PatientController::class, 'index']);
 Route::get('/product/{id}',[ProductController::class, 'show']);
+Route::get('/psychologist/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
 Route::get('/psychologist/{id}',[PsychologistController::class, 'show']);
 Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
 Route::get('/rating/{id}',[RatingController::class, 'show']);
+Route::get('/regional',[RegionalController::class, 'index']);
+Route::get('/speciality',[SpecialityController::class, 'index']);
+Route::get('/state',[StateController::class, 'index']);
+Route::get('/themes',[ThemeController::class, 'index']);
+Route::get('/themes/{id?}',[ThemeController::class, 'show']);
+Route::get('/video/{order}/{pages}/{page}',[VideoController::class, 'index']);
 Route::get('/video/fullcount',[VideoController::class, 'fullcount']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
 Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
-Route::post('/video/search',[VideoController::class, 'search']);
 Route::get('/video/random/{limit?}',[VideoController::class, 'random']);
 
-Route::get('/speciality',[SpecialityController::class, 'index']);
-Route::get('/regional',[RegionalController::class, 'index']);
-Route::get('/areas',[AreaController::class, 'index']);
-Route::get('/themes',[ThemeController::class, 'index']);
-Route::get('/themes/{id?}',[ThemeController::class, 'show']);
-
-Route::get('/mediathemes',[MediaThemeController::class, 'index']);
-Route::post('/mediathemes/search',[MediaThemeController::class, 'search']);
+Route::prefix('/patient')->group( function(){
+    Route::post('/store',[PatientController::class, 'store']);
+    Route::get('/{id}',[PatientController::class, 'show']);
+});
 
 // Protected Routes
 
@@ -97,10 +99,7 @@ Route::group(['middleware' => ['apiJwt']], function(){
         Route::delete('/{id}',[MessageController::class, 'destroy']);
     });
 
-    Route::get('/patient/{order}/{pages}/{page}',[PatientController::class, 'index']);
     Route::prefix('/patient')->group( function(){
-        Route::post('/store',[PatientController::class, 'store']);
-        Route::get('/{id}',[PatientController::class, 'show']);
         Route::put('/{id}',[PatientController::class, 'update']);
         Route::delete('/{id}',[PatientController::class, 'destroy']);
     });
