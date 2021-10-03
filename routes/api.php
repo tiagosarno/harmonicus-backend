@@ -66,6 +66,7 @@ Route::get('/article/{id}',[ArticleController::class, 'show']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
 Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
 Route::get('/video/random/{limit?}',[VideoController::class, 'random']);
+Route::get('/article/random/{limit?}',[ArticleController::class, 'random']);
 
 Route::prefix('/patient')->group( function(){
     Route::post('/store',[PatientController::class, 'store']);
