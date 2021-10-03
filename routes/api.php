@@ -26,8 +26,15 @@ use App\Http\Controllers\MediaThemeController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\PsyScheduleController;
 use App\Http\Controllers\PsychologistController;
+use Illuminate\Support\Facades\Mail;
 
 // Public Routes
+
+Route::post('mail/confirm', function(){
+    return new \App\Mail\confirmAcount();
+    // FIXME:
+    // Mail::send(new \App\Mail\confirmAcount());
+});
 
 // GET JWT TOKEN
 Route::post('auth/login',[AuthController::class, 'login']);
@@ -37,7 +44,6 @@ Route::post('/state/search',[StateController::class, 'search']);
 Route::post('/video/search',[VideoController::class, 'search']);
 
 Route::get('/areas',[AreaController::class, 'index']);
-Route::get('/article/{id}',[ArticleController::class, 'show']);
 Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
 Route::get('/country',[CountryController::class, 'index']);
 Route::get('/mediathemes',[MediaThemeController::class, 'index']);
@@ -54,6 +60,8 @@ Route::get('/themes',[ThemeController::class, 'index']);
 Route::get('/themes/{id?}',[ThemeController::class, 'show']);
 Route::get('/video/{order}/{pages}/{page}',[VideoController::class, 'index']);
 Route::get('/video/fullcount',[VideoController::class, 'fullcount']);
+Route::get('/article/fullcount',[ArticleController::class, 'fullcount']);
+Route::get('/article/{id}',[ArticleController::class, 'show']);
 Route::get('/video/{id}',[VideoController::class, 'show']);
 Route::get('/video/youtube/{query}',[VideoController::class, 'getYouTubeData']);
 Route::get('/video/random/{limit?}',[VideoController::class, 'random']);
