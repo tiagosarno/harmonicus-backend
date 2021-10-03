@@ -42,6 +42,7 @@ Route::post('/city/search',[CityController::class, 'search']);
 Route::post('/mediathemes/search',[MediaThemeController::class, 'search']);
 Route::post('/state/search',[StateController::class, 'search']);
 Route::post('/video/search',[VideoController::class, 'search']);
+Route::post('/article/search',[ArticleController::class, 'search']);
 
 Route::get('/areas',[AreaController::class, 'index']);
 Route::get('/article/{order}/{pages}/{page}',[ArticleController::class, 'index']);
