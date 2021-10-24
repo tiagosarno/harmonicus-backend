@@ -36,6 +36,12 @@ Route::post('mail/confirm', function(){
     // Mail::send(new \App\Mail\confirmAcount());
 });
 
+Route::prefix('/user')->group( function(){
+    Route::post('/store',[UserController::class, 'store']);
+    Route::get('/{id}',[UserController::class, 'show']);
+    Route::post('/search',[UserController::class, 'search']);    
+});
+
 // GET JWT TOKEN
 Route::post('auth/login',[AuthController::class, 'login']);
 Route::post('/city/search',[CityController::class, 'search']);
@@ -50,8 +56,6 @@ Route::get('/country',[CountryController::class, 'index']);
 Route::get('/mediathemes',[MediaThemeController::class, 'index']);
 Route::get('/patient/{order}/{pages}/{page}',[PatientController::class, 'index']);
 Route::get('/product/{id}',[ProductController::class, 'show']);
-Route::get('/psychologist/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
-Route::get('/psychologist/{id}',[PsychologistController::class, 'show']);
 Route::get('/psyschedule/{id}',[PsyScheduleController::class, 'show']);
 Route::get('/rating/{id}',[RatingController::class, 'show']);
 Route::get('/regional',[RegionalController::class, 'index']);
@@ -71,6 +75,12 @@ Route::get('/article/random/{limit?}',[ArticleController::class, 'random']);
 Route::prefix('/patient')->group( function(){
     Route::post('/store',[PatientController::class, 'store']);
     Route::get('/{id}',[PatientController::class, 'show']);
+});
+
+Route::prefix('/psychologist')->group( function(){
+    Route::post('/store',[PsychologistController::class, 'store']);
+    Route::get('/{order}/{pages}/{page}',[PsychologistController::class, 'index']);
+    Route::get('/{id}',[PsychologistController::class, 'show']);
 });
 
 // Protected Routes
@@ -122,7 +132,6 @@ Route::group(['middleware' => ['apiJwt']], function(){
     });
 
     Route::prefix('/psychologist')->group( function(){
-        Route::post('/store',[PsychologistController::class, 'store']);
         Route::put('/{id}',[PsychologistController::class, 'update']);
         Route::delete('/{id}',[PsychologistController::class, 'destroy']);
     });
@@ -169,9 +178,6 @@ Route::group(['middleware' => ['apiJwt']], function(){
 
     Route::get('/user/{order}/{pages}/{page}',[UserController::class, 'index']);
     Route::prefix('/user')->group( function(){
-        Route::post('/store',[UserController::class, 'store']);
-        Route::get('/{id}',[UserController::class, 'show']);
-        Route::post('/search',[UserController::class, 'search']);
         Route::put('/{id}',[UserController::class, 'update']);
         Route::delete('/{id}',[UserController::class, 'destroy']);
     });
