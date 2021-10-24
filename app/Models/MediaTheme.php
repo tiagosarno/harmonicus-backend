@@ -17,6 +17,9 @@ class MediaTheme extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
         'id_article',
         'id_video',
         'id_theme',

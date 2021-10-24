@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Rating extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = "id";
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     *
+     */
+    protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
+        'id_schedule',
+        'rating',
+        'description',
+        'type',
+    ];
 }

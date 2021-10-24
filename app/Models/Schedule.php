@@ -16,6 +16,9 @@ class Schedule extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
         'id_psychologist',
         'id_patient',
         'schedule',
@@ -25,6 +28,6 @@ class Schedule extends Model
         'price',
         'rating',
         'rating_note',
-        'public_rating'
+        'public_rating',
     ];
 }

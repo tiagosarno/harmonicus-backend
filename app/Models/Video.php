@@ -10,17 +10,22 @@ class Video extends Model
     use HasFactory;
 
     protected $primaryKey = "id";
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
         'id_psychologist',
         'id_theme',
+        'date',
         'status',
         'title',
         'description',
-        'video'
+        'video',
     ];
 }

@@ -16,12 +16,15 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
         'id_psychologist',
         'id_theme',
         'date',
         'status',
         'title',
         'description',
-        'file'
+        'file',
     ];
 }

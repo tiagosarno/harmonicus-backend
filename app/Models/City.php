@@ -16,6 +16,7 @@ class City extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'name',
         'uf',
         'ibge',

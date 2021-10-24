@@ -17,6 +17,9 @@ class Psychologist extends Model
      *
      */
     protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
         'status',
         'terms_agree',
         'file_avatar',
@@ -42,7 +45,6 @@ class Psychologist extends Model
         'website_url',
         'instagram_url',
         'address_cep',
-        'know_google_meeting',
         'address_state',
         'address_city',
         'address_district',
